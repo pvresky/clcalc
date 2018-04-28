@@ -1,6 +1,7 @@
 # CLCalc - Command Line Calculator
 
 Author: Patrick Vresky
+
 Contact: pvresky@gmail.com
 
 A command line calculator. Numeric type is double precision floating point. Supports addition, subtraction, multiplication, and division, along with parentheses. Correctly implements order of operations. Expression parsing performed in single-pass, left to right.
@@ -12,9 +13,10 @@ To terminate the application, type `exit` or `quit`.
 
 ### Grammar
 expression &rarr; terminal + expression
-terminal &rarr; terminal + primary
-primary &rarr; primary
 
+terminal &rarr; terminal + primary
+
+primary &rarr; primary
 
 ### Error handling
 Simply returns ERROR if an error is encountered during parsing. Please check that your input is a valid mathematical expression and that parentheses are balanced.
