@@ -45,14 +45,12 @@ Token_value get_token() {
 	case '.':
 		dubs.clear();
 		dubs.push_back(str[index]);
-		//cout << dubs << '\t' << "dubs" << '\t';	//DEBUG
 		while (index + 1 < str.length() && isNumber(str[index + 1])) {
 			index++;
 			dubs.push_back(str[index]);
 		}
 		index++;
 		stringstream(dubs) >> number;
-		//cout << "number: " << number << endl;	//DEBUG
 		return curr_tok = NUMBER;
 	case ' ': case '\t':
 		index++;
@@ -64,7 +62,6 @@ Token_value get_token() {
 }
 
 double expr(bool get) {
-	//cout << "EXPR" << endl;
 	double left = term(get);
 	while (true)
 		switch (curr_tok) {
@@ -80,7 +77,6 @@ double expr(bool get) {
 }
 
 double term(bool get) {
-	//cout << "TERM" << endl;
 	double left = prim(get);
 	while (true)
 		switch (curr_tok) {
@@ -102,7 +98,6 @@ double term(bool get) {
 }
 
 double prim(bool get) {
-	//cout << "PRIM" << endl;
 	if (get) get_token();
 	double n;
 	switch (curr_tok) {
@@ -132,65 +127,3 @@ int main() {
 	}
 	return 0;
 }
-
-
-// TESTS
-
-/* TEST TOKENS
-curr_tok = NUMBER;
-cout << curr_tok << endl;
-curr_tok = END;
-cout << curr_tok << endl;
-curr_tok = PLUS;
-cout << curr_tok << endl;
-curr_tok = MINUS;
-cout << curr_tok << endl;
-curr_tok = MUL;
-cout << curr_tok << endl;
-curr_tok = DIV;
-cout << curr_tok << endl;
-curr_tok = LP;
-cout << curr_tok << endl;
-curr_tok = RP;
-cout << curr_tok << endl;
-*/
-
-/*	TEST GET_TOKEN()
-while (curr_tok != END)
-	cout << number << '\t' << get_token() << '\t' << number << endl;
-*/
-
-/* DFA TO CHECK INPUT VALIDITY
-int state = 0;	// 0 start, 1 digit, 2 ., 3 + - * /, 4 end
-
-for (int i = 0; i < str.length(); i++) {
-	if ((state == 0 || state == 1 || state == 2 || state == 3) && (str[i] >= '0' && str[i] <= '9')) {
-		state = 1;
-		cout << state;
-		if (i == str.length() - 1) state = 4;
-	}
-	else if (state == 1 && str[i] == '.') {
-		state = 2;
-		cout << state;
-	}
-	else if (state == 1 && (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')) {
-		state = 3;
-		cout << state;
-	}
-	else {
-		cout << "ERROR" << endl;
-		break;
-	}
-
-	if (state == 4) cout << endl;
-			
-	int start, end;
-	start = i;
-	while (str[i] > '0' && str[i] < '9' || str[i] == '.') {
-		i++;
-		end = i;
-	}
-	cout << start << " " << end << endl;
-	
-}
-*/
