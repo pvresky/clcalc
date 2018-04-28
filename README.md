@@ -7,30 +7,30 @@ A command line calculator. Numeric type is double precision floating point. Supp
 
 To terminate the application, type `exit` or `quit`.
 
-##### Alphabet
+#### Alphabet
 `{0,1,2,3,4,5,6,7,8,9,.,+,-,*,/,(,),'exit','quit'}`
 
-##### Grammar
+#### Grammar
 expression &rarr; terminal + expression
 terminal &rarr; terminal + primary
 primary &rarr; primary
 
 
-##### Error handling
+#### Error handling
 Simply returns ERROR if an error is encountered during parsing. Please check that your input is a valid mathematical expression and that parentheses are balanced.
 
-##### Compilation on Linux:
+#### Compilation on Linux:
 `gcc clcalc.cpp -o clcalc`
 
-##### Compilation on Windows
+#### Compilation on Windows
 From Visual Studio Developer Command Prompt, type
 
 `cl /EHsc clcalc.cpp`
 
-##### Usage
+#### Usage
 Simply input your mathematical expression and hit <Enter>
 
-##### Example usage
+#### Example usage
 Input:
 
 `1+1`
